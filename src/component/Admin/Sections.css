@@ -1,0 +1,71 @@
+.sections_container {
+  display: flex;
+}
+.sections_container > div:first-child {
+  width: 300px;
+}
+.sections_container > .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.sections_container > .content .form_container {
+  background-color: var(--bg_secondary);
+  padding: 50px;
+}
+.sections_container > .content .form_container form {
+  display: flex;
+  /* flex-direction: column; */
+  margin: 0 auto;
+  justify-content: center;
+}
+.sections_container > .content .form_container form > div {
+  display: flex;
+  flex-direction: column;
+}
+.sections_container > .content .form_container form input {
+  height: 45px;
+  padding: 5px 15px;
+}
+.sections_container > .content .form_container form button {
+  background-color: var(--primary);
+  transition: all 0.3s;
+  color: var(--white);
+}
+.sections_container > .content .form_container form button:hover {
+  background-color: var(--primary_dark);
+}
+.sections_container > .content .itemsContainer {
+  background-color: var(--bg_secondary);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sections_container > .content .itemsContainer .item {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 500px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+.sections_container > .content .itemsContainer .item > span {
+  padding: 10px;
+
+  background-color: var(--bg);
+}
+.sections_container > .content .itemsContainer .item .subItem {
+  margin: 5px;
+  margin-left: 50px;
+  padding: 10px;
+  transition: all 0.3s;
+
+  background-color: var(--bg);
+}
+.sections_container > .content .itemsContainer .item > .subItem {
+  display: none;
+}
+.sections_container > .content .itemsContainer .item.active .subItem {
+  display: block;
+}

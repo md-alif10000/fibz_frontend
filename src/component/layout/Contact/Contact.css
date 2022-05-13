@@ -1,0 +1,84 @@
+.contactContainer {
+  height: calc(100vh - 200px);
+  width: 100vw;
+  max-width: 100%;
+  display: grid;
+  place-items: center;
+
+ 
+}
+.contactContainer fieldset {
+  box-shadow: 0px 1px 11px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 1px 11px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 11px 0px rgba(0, 0, 0, 0.75);
+  background-color: var(--bg_secondary);
+}
+.contactContainer fieldset legend {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: var(--bg_secondary);
+  padding: 20px;
+}
+.form {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.form > div label {
+  padding: 5px;
+  color: var(--primary);
+  font-size: 14px;
+}
+.form > div input {
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid var(--gray);
+  color: var(--text);
+  background-color: var(--bg_secondary);
+}
+.form > div input:focus {
+  outline: 1px solid var(--primary);
+}
+.form > div textarea:focus {
+  outline: 1px solid var(--primary);
+}
+.form > div textarea {
+  height: 200px;
+  resize: vertical;
+  padding: 10px;
+  background-color: var(--bg_secondary);
+  color: var(--text);
+  letter-spacing: 1px;
+
+}
+.form > div button {
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+.form > div button:hover {
+  background-color: var(--primary_dark);
+}
+
+@media screen and (max-width: 600px) {
+  .contactContainer fieldset legend {
+    font-size: 24px;
+    padding: 10px;
+  }
+  .form {
+    padding: 20px;
+    width: 90vw;
+  }
+}

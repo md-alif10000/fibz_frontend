@@ -1,0 +1,21 @@
+.aboutSection .about_container {
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg_secondary);
+  margin: 30px auto;
+  padding: 4vw;
+}
+
+.aboutSection .about_container h1 {
+  color: var(--primary);
+  text-align: center;
+}
+
+
+.aboutSection .about_container p{
+    font-size: 18px;
+    padding: 50px;
+    line-height: 30px;
+    letter-spacing: 0.7px;
+}

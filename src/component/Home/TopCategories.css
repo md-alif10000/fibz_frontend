@@ -1,0 +1,11 @@
+.topCategories {
+  /* color: black; */
+  max-width: 100vw;
+  padding: 100px;
+  background-color: black !important;
+}
+.topCategories .topCategory {
+  background-color: var(--primary);
+  color: wheat;
+  width: 200px;
+}

@@ -1,0 +1,154 @@
+.productCard {
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+  border-radius: 10%;
+  position: relative;
+  background-color: var(--bg);
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid transparent;
+  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.75);
+}
+.productCard > div:first-child {
+  display: flex;
+  flex: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.productCard > div:last-child {
+  flex: 1;
+}
+.productCard img {
+  border-radius: 10px;
+  border: 1px solid var(--gray);
+  object-fit: cover;
+  border-radius: 10%;
+  width: 200px;
+  height: 200px;
+}
+
+.productCard > div:nth-child(2) {
+  margin: 0.5vmax;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.productCard .actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.productCard .actions > div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: var(--white);
+  background-color: var(--primary);
+  padding: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 9px 0px rgba(0, 0, 0, 0.75);
+}
+.productCard .actions > div * {
+  cursor: pointer;
+}
+.productCard .actions > div:hover {
+  background-color: var(--primary_dark);
+}
+
+.productCardSpan {
+  margin: 0.5vmax;
+  font: 300 0.7vmax "Roboto";
+}
+.MuiRating-root {
+  font-size: 12px;
+}
+.productCard .productTitle {
+  font-family: "Roboto";
+  font-size: 15px;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+  font-weight: 500;
+  height: 35px;
+  overflow: hidden;
+}
+
+.productCard .price {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.8px;
+  padding: 3px;
+}
+.productCard .prev-price {
+  font-size: 12px;
+}
+
+.productCard:hover {
+  transform: translateY(-1vmax);
+
+  border: 2px solid var(--primary);
+}
+.prices {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 600px) {
+  .productCard {
+    width: 45vw;
+    align-items: center;
+    margin: 2px;
+    margin-bottom: 10px;
+    border-radius: 10%;
+    border: none;
+  }
+  .productCard .ratings {
+    display: none;
+  }
+
+  .productCard img {
+    width: 40vw;
+    height: 40vw;
+  }
+  .productCard .prev-price {
+    font-size: 10px;
+  }
+
+  .productCard .productTitle {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .productCard > div {
+    margin: 0vmax;
+    display: block;
+  }
+
+  .productCard .price {
+    font-size: 16px;
+  }
+
+  .productCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 2vmax;
+  }
+}
