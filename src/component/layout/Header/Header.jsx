@@ -1,13 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
+import { BsChevronDown,BsXLg } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCategories, getSections } from "../../../actions/categoryAction";
+import { Drawer } from "@material-ui/core";
+import { BsGridFill } from "react-icons/bs";
 import "./Header.css";
 
 const Header = () => {
+  const [drawerOpen, setdrawerOpen] = useState(false);
   const { sections, categories } = useSelector((state) => state.categories);
+
+  const [selectedItem, setselectedItem] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -30,6 +36,32 @@ const Header = () => {
       </div>
     );
   };
+
+  const getSubItems = (sectionID) => {
+    const _categories = categories.filter((cat) => cat.section == sectionID);
+
+    return (
+      <div
+        className={`${
+          selectedItem == sectionID ? "subItems show" : "subItems"
+        }`}
+      >
+        {_categories.map((cat, index) => (
+          <Link to={"/products"} onClick={()=>setdrawerOpen(false)} className="subItem" key={index}>
+            {cat.name}
+          </Link>
+        ))}
+      </div>
+    );
+  };
+
+  const toggle = (ID) => {
+    console.log(ID);
+    if (selectedItem == ID) {
+      return setselectedItem(null);
+    }
+    setselectedItem(ID);
+  };
   return (
     <div className="header">
       <div className="top">
@@ -43,6 +75,38 @@ const Header = () => {
               <a href="mailto:contact@fibz.com">contact@fibz.com</a>
             </div>
           </div>
+          <div className="menuIcon" onClick={() => setdrawerOpen(!drawerOpen)}>
+            <BsGridFill />
+          </div>
+          <Drawer
+            anchor={"left"}
+            open={drawerOpen}
+            onClose={() => setdrawerOpen(false)}
+            onOpen={() => setdrawerOpen(true)}
+          >
+            <div className="drawerContainer">
+              <div className="drawerClose">
+                <BsXLg onClick={()=>setdrawerOpen(false)} />
+              </div>
+              <div className="accordion">
+                {sections.map((section, index) => (
+                  <div
+                    key={index}
+                    className={`${
+                      selectedItem === section._id ? "item active" : "item"
+                    }`}
+                    onClick={() => toggle(section._id)}
+                  >
+                    <div className="itemTitle">
+                      <span> {section.name}</span>
+                      <BsChevronDown className="arrow" />
+                    </div>
+                    {getSubItems(section._id)}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Drawer>
         </div>
         <div className="center">
           <Link to={"/"} className="logo">

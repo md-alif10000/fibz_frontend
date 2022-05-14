@@ -1,6 +1,7 @@
 import React from "react";
 import { BiCart, BiHome } from "react-icons/bi";
 import { BsPersonFill, BsShop } from "react-icons/bs";
+import { BiUserCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import './navbar.css'
 const BottomNav = () => {
@@ -24,7 +25,7 @@ const BottomNav = () => {
         </Link>
         <Link to="/account" >
           <div>
-            <BsPersonFill />
+            <BiUserCircle /> 
           </div>
         </Link>
       </div>

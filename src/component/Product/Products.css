@@ -30,16 +30,6 @@
   padding: 10px;
 }
 
-.productsHeading {
-  margin: 2vmax auto;
-  width: 15vw;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
-  padding: 2vmax;
-  color: rgba(0, 0, 0, 0.678);
-  font: 500 1.5vmax "Roboto";
-  text-align: center;
-}
-
 .paginationBox {
   display: flex;
   justify-content: center;
@@ -212,6 +202,9 @@
   }
 }
 @media screen and (max-width: 600px) {
+  .productsContainer{
+    margin: 0px auto;
+  }
   .products {
     padding: 0;
     justify-content: space-around;

@@ -1,5 +1,6 @@
 .product_card {
   border: 2px solid transparent;
+  margin: 5px 0;
 }
 .product_card:hover .card_container .image_container img {
   transform: scale(1.1);
@@ -57,10 +58,16 @@
 
 @media screen and (max-width: 600px) {
   .product_card .card_container {
-    width: 45vw;
+    width: 43vw;
     height: 350px;
   }
   .product_card .card_container .info_container p {
+    font-size: 13px;
+  }
+  .product_card .card_container .info_container .price {
     font-size: 14px;
+  }
+  .product_card .card_container .info_container {
+    height: 80px;
   }
 }
