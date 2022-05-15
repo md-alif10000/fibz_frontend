@@ -1,14 +1,32 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import "./Sections.css";
-import { getCategories, getSections } from "../../actions/categoryAction";
+import { getCategories, getSections,createSection } from "../../actions/categoryAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const Sections = () => {
   const dispatch = useDispatch();
   const [activeId, setactiveId] = useState("");
 
+  const [sectionName, setsectionName] = useState("");
+  const [sectionImage, setsectionImage] = useState(null);
+
   const { categories, sections } = useSelector((state) => state.categories);
+
+  const addNewSection = (e) => {
+    console.log(e);
+    e.preventDefault();
+    console.log("...................");
+
+    try {
+      const myForm = new FormData();
+      myForm.set("name", sectionName);
+      myForm.append("image", sectionImage);
+      dispatch(createSection(myForm));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     dispatch(getSections);
@@ -32,18 +50,27 @@ const Sections = () => {
       <Sidebar />
       <div className="content">
         <div className="form_container">
-          <form action="">
+          <form encType="multipart/form-data" onSubmit={addNewSection} >
             <div>
-              <input type="text" placeholder="Enter Sections's Name" />
+              <input
+                type="text"
+                placeholder="Enter Sections's Name"
+                onChange={(e) => setsectionName(e.target.value)}
+              />
+              <input
+                type="file"
+                placeholder="Enter Sections's Name"
+                onChange={(e) => setsectionImage(e.target.files[0])}
+              />
             </div>
 
-            <button type="submit">Add Section</button>
+          <input type="submit" value={"Submit"} />
           </form>
         </div>
         <div className="itemsContainer">
           {sections.map((section, index) => (
             <div
-            key={index}
+              key={index}
               className={` ${section._id == activeId ? "active item" : "item"}`}
               onClick={() => setactiveId(section._id)}
             >

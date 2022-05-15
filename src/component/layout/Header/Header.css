@@ -137,6 +137,7 @@
   width: 250px;
   height: auto;
   font-size: 16px;
+  transition: all 0.3s ease-in-out;
 }
 .accordion .item {
   display: flex;
@@ -185,9 +186,9 @@
 }
 .drawerClose {
   position: absolute;
-  right: 20px;
+  right: 10px;
   color: var(--primary);
-  top: 20px;
+  top: 10px;
   font-size: 26px;
 }
 @media screen and (min-width: 600px) {

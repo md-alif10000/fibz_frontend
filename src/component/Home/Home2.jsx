@@ -32,7 +32,13 @@ const Home2 = () => {
       <div className="home_container">
         <HomeSlider2 />
         <TopCategories/>
+
+        <h1 className="sectionHeading">
+          Our Collections
+        </h1>
         <div className="sections">
+
+
           {sections.slice(1).map((section, index) => (
             <Link
               to={`products/?section=${section._id}`}
