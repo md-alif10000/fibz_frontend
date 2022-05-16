@@ -22,10 +22,7 @@ export default function TopCategories() {
             {categories.map((category, index) => (
               <Link to={"/products"} className="topCategory">
                 <div className="imageContainer">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiOc5pXv7ux_F0vHepOncg98DWM-tKbxpZzg&usqp=CAU"
-                    alt=""
-                  />
+                  <img src={category?.image?.url} alt="" />
                 </div>
                 <div className="title">{category.name}</div>
               </Link>

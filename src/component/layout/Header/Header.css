@@ -23,10 +23,17 @@
   display: flex;
   flex-direction: column;
 }
+.header .top .left .contacts .contact{
+  display: flex;align-items: center;
+}
 .header .top .left .contacts .contact span {
   color: var(--dark);
   margin-right: 10px;
   font-weight: 600;
+}
+.header .top .left .contacts .contact .icon{
+  color: var(--primary);
+  margin-right: 10px;
 }
 .header .top .left .contacts .contact a {
   color: var(--primary);
@@ -199,6 +206,9 @@
 @media screen and (max-width: 600px) {
   .header .bottom {
     display: none;
+  }
+  .header .logo img{
+    height: 80px;
   }
   .header .top .left .contacts {
     display: none;

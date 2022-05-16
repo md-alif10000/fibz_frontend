@@ -1,7 +1,11 @@
+import { toast } from "react-toastify";
 import {
   CREATE_SECTION_FAILURE,
   CREATE_SECTION_REQUEST,
   CREATE_SECTION_SUCCESS,
+  DELETE_SECTION_FAILURE,
+  DELETE_SECTION_REQUEST,
+  DELETE_SECTION_SUCCESS,
   GET_CATEGORY_FAILURE,
   GET_CATEGORY_REQUEST,
   GET_CATEGORY_SUCCESS,
@@ -92,9 +96,63 @@ export const createSection = (sectionData) => async (dispatch) => {
       type: CREATE_SECTION_SUCCESS,
       payload: data,
     });
+    toast.success("Successfully Added New Section");
   } catch (error) {
     dispatch({
       type: CREATE_SECTION_FAILURE,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const deleteSection = (id) => async (dispatch) => {
+  console.log("In action");
+  try {
+    dispatch({ type: DELETE_SECTION_REQUEST });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axios.delete(
+      `${backend_api}/api/v1/admin/section/${id}`
+    );
+
+    dispatch({
+      type: DELETE_SECTION_SUCCESS,
+    });
+    toast.success("Successfully Deleted");
+
+    getSections();
+    getCategories();
+  } catch (error) {
+    dispatch({
+      type: DELETE_SECTION_FAILURE,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const deleteCategory = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: DELETE_SECTION_REQUEST });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axios.delete(
+      `${backend_api}/api/v1/admin/category/${id}`
+    );
+
+    dispatch({
+      type: DELETE_SECTION_SUCCESS,
+    });
+    toast.success("Successfully Deleted");
+    getCategories();
+  } catch (error) {
+    dispatch({
+      type: DELETE_SECTION_FAILURE,
       payload: error.response.data.message,
     });
   }

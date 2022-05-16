@@ -9,10 +9,10 @@
 
   flex: 1;
   display: flex;
+  background-color: var(--bg_secondary);
   flex-direction: column;
 }
 .sections_container > .content .form_container {
-  background-color: var(--bg_secondary);
   padding: 50px;
 }
 .sections_container > .content .form_container form {
@@ -56,18 +56,30 @@
   padding: 10px;
 
   background-color: var(--bg);
+  display: flex;
+  justify-content: space-between;
 }
 .sections_container > .content .itemsContainer .item .subItem {
   margin: 5px;
   margin-left: 50px;
   padding: 10px;
   transition: all 0.3s;
-
   background-color: var(--bg);
+  display: flex;
+  justify-content: space-between;
 }
 .sections_container > .content .itemsContainer .item > .subItem {
   display: none;
 }
 .sections_container > .content .itemsContainer .item.active .subItem {
-  display: block;
+  display: flex;
+}
+
+.deleteIcon:hover {
+  color: var(--primary);
+  transition: all 0.3s;
+}
+.submit {
+  background-color: var(--primary);
+  color: var(--white);
 }

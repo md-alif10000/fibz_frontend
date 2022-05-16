@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
-import { BsChevronDown,BsXLg } from "react-icons/bs";
+import {
+  BsChevronDown,
+  BsXLg,
+  BsFillTelephoneFill,
+  BsEnvelopeFill,
+} from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCategories, getSections } from "../../../actions/categoryAction";
@@ -47,7 +52,12 @@ const Header = () => {
         }`}
       >
         {_categories.map((cat, index) => (
-          <Link to={"/products"} onClick={()=>setdrawerOpen(false)} className="subItem" key={index}>
+          <Link
+            to={"/products"}
+            onClick={() => setdrawerOpen(false)}
+            className="subItem"
+            key={index}
+          >
             {cat.name}
           </Link>
         ))}
@@ -68,9 +78,11 @@ const Header = () => {
         <div className="left">
           <div className="contacts">
             <div className="contact">
-              <span>Call US</span> <a href="tel:0130551151">+880 143154151</a>
+              <BsFillTelephoneFill className="icon" /> <span>Call US</span>{" "}
+              <a href="tel:0130551151">+880 143154151</a>
             </div>
             <div className="contact">
+              <BsEnvelopeFill className="icon" />
               <span>Email</span>
               <a href="mailto:contact@fibz.com">contact@fibz.com</a>
             </div>
@@ -86,7 +98,7 @@ const Header = () => {
           >
             <div className="drawerContainer">
               <div className="drawerClose">
-                <BsXLg onClick={()=>setdrawerOpen(false)} />
+                <BsXLg onClick={() => setdrawerOpen(false)} />
               </div>
               <div className="accordion">
                 {sections.map((section, index) => (
@@ -111,7 +123,7 @@ const Header = () => {
         <div className="center">
           <Link to={"/"} className="logo">
             <img
-              src="https://res.cloudinary.com/mr-marvel/image/upload/v1652368687/layouts/2_FIBZ_profile_ig-removebg-preview_abdihd.png"
+              src="https://res.cloudinary.com/mr-marvel/image/upload/v1652720090/layouts/3_FIBZ_qml1bk.svg"
               alt=""
             />
           </Link>

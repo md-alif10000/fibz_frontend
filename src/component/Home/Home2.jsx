@@ -31,18 +31,16 @@ const Home2 = () => {
     <div>
       <div className="home_container">
         <HomeSlider2 />
-        <TopCategories/>
+        <TopCategories />
 
-        <h1 className="sectionHeading">
-          Our Collections
-        </h1>
+        <h1 className="sectionHeading">Our Collections</h1>
         <div className="sections">
-
-
-          {sections.slice(1).map((section, index) => (
+          {sections.map((section, index) => (
             <Link
+            key={index}
               to={`products/?section=${section._id}`}
               className="section"
+              style={{ backgroundImage: `url(${section?.image?.url})` }}
             >
               <div>
                 <p>{section.name}</p>

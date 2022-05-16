@@ -15,7 +15,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       
-        <img src={"https://res.cloudinary.com/mr-marvel/image/upload/v1652368687/layouts/3-FIBZ-removebg-preview_dftgyu.png"} alt="Ecommerce" />
+        <img src={"https://res.cloudinary.com/mr-marvel/image/upload/v1652720090/layouts/3_FIBZ_qml1bk.svg"} alt="Ecommerce" />
     
       <Link to="/admin/dashboard">
         <p>
