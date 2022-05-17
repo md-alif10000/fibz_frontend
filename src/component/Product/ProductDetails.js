@@ -22,6 +22,7 @@ import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 import { toast } from "react-toastify";
 import { AiFillMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import ReactImageMagnify from "react-image-magnify";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,10 @@ const ProductDetails = ({ match }) => {
 
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
+  );
+
+  const [imageSrc, setimageSrc] = useState(
+    product.images && product.images[0].url
   );
 
   const options = {
@@ -100,6 +105,12 @@ const ProductDetails = ({ match }) => {
     dispatch(getProductDetails(match.params.id));
   }, [dispatch, match.params.id, error, toast, reviewError, success]);
 
+  useEffect(() => {
+    if (product.images) {
+      setimageSrc(product?.images[0]?.url);
+    }
+  }, [product]);
+
   return (
     <Fragment>
       {loading ? (
@@ -108,18 +119,40 @@ const ProductDetails = ({ match }) => {
         <Fragment>
           <MetaData title={`${product.name} -- ECOMMERCE`} />
           <div className="ProductDetails">
-            <div className="carousel">
-              <Carousel navButtonsAlwaysVisible={true}>
+            <div className="left">
+              <div className="selectedImg">
+                {imageSrc && (
+                  <ReactImageMagnify
+                    {...{
+                      smallImage: {
+                        alt: "Wristwatch by Ted Baker London",
+                        isFluidWidth: true,
+                        src: imageSrc,
+                      },
+                      largeImage: {
+                        src: imageSrc,
+                        width: 800,
+                        height: 800,
+                      },
+                      lensStyle: { width: 100 },
+                      isHintEnabled: true,
+                      shouldHideHintAfterFirstActivation: false,
+                    }}
+                  />
+                )}
+              </div>
+
+              <div className="images">
                 {product.images &&
                   product.images.map((item, i) => (
                     <img
-                      className="CarouselImage"
+                      onClick={() => setimageSrc(item.url)}
                       key={i}
                       src={item.url}
                       alt={`${i} Slide`}
                     />
                   ))}
-              </Carousel>
+              </div>
             </div>
 
             <div>

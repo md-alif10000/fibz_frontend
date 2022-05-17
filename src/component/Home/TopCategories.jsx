@@ -20,7 +20,10 @@ export default function TopCategories() {
         <div className="caurosel">
           <Carousel breakPoints={breakPoints}>
             {categories.map((category, index) => (
-              <Link to={"/products"} className="topCategory">
+              <Link
+                to={`/products/${category.section}/${category._id}`}
+                className="topCategory"
+              >
                 <div className="imageContainer">
                   <img src={category?.image?.url} alt="" />
                 </div>

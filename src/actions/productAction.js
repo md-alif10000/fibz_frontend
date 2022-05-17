@@ -50,11 +50,11 @@ export const getProduct =
 
       let link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
       if (section) {
-        link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&section=${section}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
-      }
-
-      if (category) {
-        link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&section=${section}&category=${category}&ratings[gte]=${ratings}`;
+        if (category) {
+          link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&section=${section}&category=${category}&ratings[gte]=${ratings}`;
+        } else {
+          link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&section=${section}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+        }
       }
 
       const { data } = await axios.get(link);

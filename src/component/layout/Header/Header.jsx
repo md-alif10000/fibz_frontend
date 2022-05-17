@@ -35,7 +35,12 @@ const Header = () => {
         <div className="categories">
           <h3>Categories</h3>
           {_categories.map((cat, index) => (
-            <Link key={index}>{cat.name}</Link>
+            <Link
+              to={`/products/${cat.section}/${cat._id}`}
+              key={index}
+            >
+              {cat.name}
+            </Link>
           ))}
         </div>
       </div>
@@ -109,10 +114,10 @@ const Header = () => {
                     }`}
                     onClick={() => toggle(section._id)}
                   >
-                    <div className="itemTitle">
+                    <Link to={`/products/${section._id}`} className="itemTitle">
                       <span> {section.name}</span>
                       <BsChevronDown className="arrow" />
-                    </div>
+                    </Link>
                     {getSubItems(section._id)}
                   </div>
                 ))}
@@ -143,7 +148,7 @@ const Header = () => {
       <div className="bottom">
         <div className="links">
           {sections.map((section) => (
-            <Link to={"/"}>
+            <Link to={`/products/${section._id}`}>
               <span>{section.name}</span>
               {menus(section._id)}
             </Link>

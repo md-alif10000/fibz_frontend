@@ -117,7 +117,8 @@ function App() {
         <Route exact path="/" component={Home2} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
-        <Route path="/products/:section" component={Products} />
+        <Route exact path="/products/:section" component={Products} />
+        <Route exact path="/products/:section/:category" component={Products} />
 
         <Route exact path="/search" component={Search} />
 

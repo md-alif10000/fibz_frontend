@@ -21,7 +21,8 @@ const Products = ({ match }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(match?.params.category);
+  const [section, setSection] = useState(match?.params.section);
 
   const [ratings, setRatings] = useState(0);
 
@@ -37,7 +38,6 @@ const Products = ({ match }) => {
   const { categories } = useSelector((state) => state.categories);
 
   const keyword = match?.params.keyword;
-  const section = match?.params.section;
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
@@ -61,14 +61,22 @@ const Products = ({ match }) => {
 
   useEffect(() => {
     applyFilter();
-  }, [currentPage]);
+  }, [currentPage, match]);
 
   const applyFilter = () => {
     dispatch(
       getProduct(keyword, section, currentPage, price, category, ratings)
     );
+
     setdrawerOpen(false);
   };
+
+  const handleCheckbox = (cat) => {
+    setCategory(cat._id);
+    setSection(cat.section);
+  };
+
+  console.log(category);
 
   const filterBox = () => {
     return (
@@ -100,7 +108,7 @@ const Products = ({ match }) => {
                 value={cat._id}
                 checked={cat._id === category}
                 id={cat._id}
-                onChange={() => setCategory(cat._id)}
+                onChange={() => handleCheckbox(cat)}
               />
               <label htmlFor={cat._id}>{cat.name}</label>
             </div>

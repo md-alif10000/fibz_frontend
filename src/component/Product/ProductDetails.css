@@ -18,10 +18,50 @@
   border: 1px solid rgb(161, 161, 161);
   background-color: var(--bg_secondary);
 }
+
+.selectedImg {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid gray;
+  height: 500px;
+  width: 500px;
+}
+.selectedImg img {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: var(--shadow-around);
+  cursor: pointer;
+}
+.images{
+  display: flex;
+  padding: 20px;
+}
+.images img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--gray);
+  margin: 5px;
+}
+.images img:hover{
+  border: 1px solid var(--primary);
+}
+.MuiRating-sizeLarge{
+  z-index: 0!important;
+}
 .ProductDetails > div:first-child {
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 }
+/* .js-image-zoom__zoomed-area{
+  width: 100px!important;
+  height: 100px!important;
+} */
 
 .ProductDetails > div:last-child {
   align-items: flex-start;
@@ -92,7 +132,6 @@
   font-size: 20px;
 }
 .detailsBlock-3-1-1 > button:first-child {
-  
   background-color: red;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -169,7 +208,6 @@
 }
 .submitReview:hover {
   background-color: var(--primary_dark);
-
 }
 
 .submitDialog {
@@ -240,7 +278,11 @@
     border-radius: 0 !important;
   }
   .ProductDetails > div:first-child {
-    height: 50vh;
+    height: auto;
+  }
+  .images img{
+    height: 80px;
+    width: 80px;
   }
 
   .ProductDetails > div:last-child {
