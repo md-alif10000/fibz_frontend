@@ -7,9 +7,11 @@ import {
   createSection,
   deleteCategory,
   deleteSection,
+  createCategory,
 } from "../../actions/categoryAction";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 const Sections = () => {
   const dispatch = useDispatch();
@@ -18,18 +20,52 @@ const Sections = () => {
   const [sectionName, setsectionName] = useState("");
   const [sectionImage, setsectionImage] = useState(null);
 
+  const [sectionId, setsectionId] = useState(null);
+  const [categoryName, setcategoryName] = useState("");
+  const [categoryImage, setcategoryImage] = useState(null);
+
   const { categories, sections } = useSelector((state) => state.categories);
 
   const addNewSection = (e) => {
-    console.log(e);
     e.preventDefault();
-    console.log("...................");
+
+    if (!sectionName) {
+      return toast.error("Section Name is required");
+    }
+
+    if (!sectionImage) {
+      return toast.error("Please select an image");
+    }
 
     try {
       const myForm = new FormData();
       myForm.set("name", sectionName);
       myForm.set("image", sectionImage);
       dispatch(createSection(myForm));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addNewCategory = (e) => {
+    console.log(e);
+    e.preventDefault();
+    if (!categoryName) {
+      return toast.error("Category Name is required");
+    }
+    if (sectionId) {
+      return toast.error("Please select section");
+    }
+    if (!categoryImage) {
+      return toast.error("Please select an image");
+    }
+
+    try {
+      const myForm = new FormData();
+      myForm.set("name", categoryName);
+      myForm.set("section", sectionId);
+      myForm.set("image", categoryImage);
+      dispatch(createCategory(myForm));
     } catch (error) {
       console.log(error);
     }
@@ -43,6 +79,17 @@ const Sections = () => {
         if (reader.readyState === 2) {
           // setAvatarPreview(reader.result);
           setsectionImage(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else if (e.target.name === "categoryImage") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          // setAvatarPreview(reader.result);
+          setcategoryImage(reader.result);
         }
       };
 
@@ -63,7 +110,6 @@ const Sections = () => {
 
   const sectionDelete = (id) => {
     dispatch(deleteSection(id));
-    
   };
 
   const getSubItem = (id) => {
@@ -103,8 +149,36 @@ const Sections = () => {
                 onChange={(e) => fileChange(e)}
               />
             </div>
+            <input className="submit" type="submit" value={"Add Section"} />
+          </form>
 
-            <input className="submit" type="submit" value={"Submit"} />
+          <form encType="multipart/form-data" onSubmit={addNewCategory}>
+            <div>
+              <input
+                type="text"
+                placeholder="Enter Category's Name"
+                onChange={(e) => setcategoryName(e.target.value)}
+              />
+              <input
+                type="file"
+                name="categoryImage"
+                placeholder="Enter Category Image"
+                onChange={(e) => fileChange(e)}
+              />
+              <select
+                name="sectionSelect"
+                id=""
+                onChange={(e) => setsectionId(e.target.value)}
+              >
+                {sections.map((section, index) => (
+                  <option key={index} value={section._id}>
+                    {section.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <input className="submit" type="submit" value={"Add Category"} />
           </form>
         </div>
         <div className="itemsContainer">

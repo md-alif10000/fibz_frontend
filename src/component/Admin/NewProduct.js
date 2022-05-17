@@ -19,7 +19,7 @@ const NewProduct = ({ history }) => {
   const alert = useAlert();
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
-  const { sections } = useSelector((state) => state.categories);
+  const { sections, categories } = useSelector((state) => state.categories);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -30,15 +30,13 @@ const NewProduct = ({ history }) => {
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
-  ];
+  const [filteredCategories, setfilteredCategories] = useState([]);
+
+  const onSectionSelect = (id) => {
+    setSection(id);
+
+    setfilteredCategories(categories.filter((cat) => cat.section == id));
+  };
 
   useEffect(() => {
     if (error) {
@@ -66,6 +64,7 @@ const NewProduct = ({ history }) => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
+    myForm.set("section", section);
     myForm.set("Stock", Stock);
 
     images.forEach((image) => {
@@ -141,7 +140,7 @@ const NewProduct = ({ history }) => {
 
             <div>
               <AccountTreeIcon />
-              <select onChange={(e) => setSection(e.target.value)}>
+              <select onChange={(e) => onSectionSelect(e.target.value)}>
                 <option value="">Select Section</option>
                 {sections.map((section) => (
                   <option key={section._id} value={section._id}>
@@ -155,9 +154,9 @@ const NewProduct = ({ history }) => {
               <AccountTreeIcon />
               <select onChange={(e) => setCategory(e.target.value)}>
                 <option value="">Choose Category</option>
-                {categories.map((cate) => (
-                  <option key={cate} value={cate}>
-                    {cate}
+                {filteredCategories.map((cate,index) => (
+                  <option key={index} value={cate._id}>
+                    {cate.name}
                   </option>
                 ))}
               </select>

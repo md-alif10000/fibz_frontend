@@ -36,7 +36,7 @@ import { backend_api } from "../utils/backend_api";
 export const getProduct =
   (
     keyword = "",
-    section = null,
+    section,
     currentPage = 1,
     price = [0, 25000],
     category,
@@ -46,10 +46,15 @@ export const getProduct =
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
 
+      console.log(section);
+
       let link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      if (section) {
+        link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&section=${section}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
+      }
 
       if (category) {
-        link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
+        link = `${backend_api}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&section=${section}&category=${category}&ratings[gte]=${ratings}`;
       }
 
       const { data } = await axios.get(link);

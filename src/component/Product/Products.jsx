@@ -13,16 +13,6 @@ import { Drawer } from "@material-ui/core";
 import { BsFilterRight, BsX } from "react-icons/bs";
 import ProductCard2 from "../Home/ProductCard2";
 
-const categories = [
-  "Laptop",
-  "Footwear",
-  "Bottom",
-  "Tops",
-  "Attire",
-  "Camera",
-  "SmartPhones",
-];
-
 const Products = ({ match }) => {
   const dispatch = useDispatch();
   const [drawerOpen, setdrawerOpen] = useState(false);
@@ -44,8 +34,10 @@ const Products = ({ match }) => {
     filteredProductsCount,
   } = useSelector((state) => state.products);
 
-  const keyword = match.params.keyword;
-  const section = match.params.section;
+  const { categories } = useSelector((state) => state.categories);
+
+  const keyword = match?.params.keyword;
+  const section = match?.params.section;
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
@@ -105,12 +97,12 @@ const Products = ({ match }) => {
               <input
                 name="category"
                 type={"checkbox"}
-                value={cat}
-                checked={cat === category}
-                id={cat}
-                onChange={() => setCategory(cat)}
+                value={cat._id}
+                checked={cat._id === category}
+                id={cat._id}
+                onChange={() => setCategory(cat._id)}
               />
-              <label htmlFor={cat}>{cat}</label>
+              <label htmlFor={cat._id}>{cat.name}</label>
             </div>
           ))}
         </ul>

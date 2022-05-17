@@ -37,8 +37,8 @@ const Home2 = () => {
         <div className="sections">
           {sections.map((section, index) => (
             <Link
-            key={index}
-              to={`products/?section=${section._id}`}
+              key={index}
+              to={`products/${section._id}`}
               className="section"
               style={{ backgroundImage: `url(${section?.image?.url})` }}
             >

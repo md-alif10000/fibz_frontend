@@ -105,6 +105,34 @@ export const createSection = (sectionData) => async (dispatch) => {
   }
 };
 
+export const createCategory = (sectionData) => async (dispatch) => {
+  console.log("In action");
+  try {
+    dispatch({ type: CREATE_SECTION_REQUEST });
+
+    const config = {
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const { data } = await axios.post(
+      `${backend_api}/api/v1/admin/category`,
+      sectionData,
+      config
+    );
+
+    dispatch({
+      type: CREATE_SECTION_SUCCESS,
+      payload: data,
+    });
+    toast.success("Successfully Added New Section");
+  } catch (error) {
+    dispatch({
+      type: CREATE_SECTION_FAILURE,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 export const deleteSection = (id) => async (dispatch) => {
   console.log("In action");
   try {
