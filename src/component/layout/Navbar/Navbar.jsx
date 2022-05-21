@@ -16,17 +16,28 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="links">
-          <Link to={"/"} className="border_bottom" >Home</Link>
-          <Link to={"/"} className="border_bottom">Shop</Link>
-          <Link to={"/"} className="border_bottom">About US</Link>
-          <Link to={"/"} className="border_bottom">Contact US</Link>
+          <Link to={"/"} className="border_bottom">
+            Home
+          </Link>
+          <Link to={"/"} className="border_bottom">
+            Shop
+          </Link>
+          <Link to={"/"} className="border_bottom">
+            About US
+          </Link>
+          <Link to={"/"} className="border_bottom">
+            Contact US
+          </Link>
         </div>
         <div className="actions">
           <Link to="/cart">
             <BiShoppingBag className="icon" />
           </Link>
 
-          <Link to="/cart"  className="box-border" > <span>Account</span> </Link>
+          <Link to="/cart" className="box-border">
+            {" "}
+            <span>Account</span>{" "}
+          </Link>
         </div>
       </div>
     </div>

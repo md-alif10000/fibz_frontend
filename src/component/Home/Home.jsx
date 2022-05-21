@@ -9,9 +9,9 @@ import {
 import { clearErrors, getProduct } from "../../actions/productAction";
 import TopCategories from "./TopCategories";
 
-import NavBar from "../layout/Navbar/NavBar";
 import Sections from "./Sections";
 import "./_home.css";
+import NavBar from "../layout/Navbar/NavBar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const Home = () => {
     dispatch(getProduct());
     dispatch(getSections());
     dispatch(getSectionscategories());
-    dispatch(getCategories())
+    dispatch(getCategories());
   }, [dispatch, error]);
 
   return (
