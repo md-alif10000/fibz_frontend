@@ -11,7 +11,7 @@ import TopCategories from "./TopCategories";
 
 import Sections from "./Sections";
 import "./_home.css";
-import NavBar from "../layout/Navbar/NavBar";
+import Nav from "../layout/Navbar/NavBar.jsx";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const Home = () => {
     <div className="home">
       <div className="hero">
         <div className="hero_container">
-          <NavBar />
+          <Nav />
           <div className="content">
 
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./_navbar.css";
 import { BiShoppingBag } from "react-icons/bi";
 
-const NavBar = () => {
+const Nav = () => {
   return (
     <div className="navbar">
       <div className="nav_container">
@@ -44,4 +44,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Nav;
