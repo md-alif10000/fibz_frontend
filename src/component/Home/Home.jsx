@@ -35,7 +35,10 @@ const Home = () => {
         <div className="hero_container">
           <NavBar />
           <div className="content">
-            <h1>WE deal only with premium</h1>
+
+
+
+            <h1>WE deal only with premium  .</h1>
           </div>
         </div>
       </div>
