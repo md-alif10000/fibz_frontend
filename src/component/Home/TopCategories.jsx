@@ -16,7 +16,7 @@ export default function TopCategories() {
   return (
     <>
       <div className="topCategories">
-        <h1 className="heading">Top Categories</h1>
+        <h1 className="heading border-bottom">Top Categories</h1>
         <div className="caurosel">
           <Carousel breakPoints={breakPoints}>
             {categories.map((category, index) => (

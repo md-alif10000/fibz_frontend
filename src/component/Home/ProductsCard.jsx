@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import ProductCard from "./ProductCard";
 import ProductCard2 from "./ProductCard2";
 const ProductsCard = ({ items, title, to, children }) => {
   return (

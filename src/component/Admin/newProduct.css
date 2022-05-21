@@ -18,9 +18,9 @@
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 3vmax;
+  padding: 50px;
   justify-content: space-evenly;
-  height: 70%;
+  height: auto;
   width: 40vw;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
@@ -100,7 +100,58 @@
 #createProductBtn:hover {
   background-color: rgb(179, 66, 46);
 }
-
+.tagsContainer {
+  color: var(--dark);
+  padding: 10px;
+  width: inherit;
+}
+.tagsContainer input {
+  height: 40px;
+  padding: 5px;
+  margin: 10px;
+  width: 400px;
+}
+.tag {
+  padding: 5px;
+  margin: 5px;
+  background-color: var(--secondary);
+}
+.colorsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.colorsContainer .colorInputs {
+  display: flex;
+  width: 100%;
+}
+.colorsContainer .colorInputs * {
+  flex: 1;
+  height: 40px;
+  padding: 5px;
+  margin: 5px;
+}
+.colorsContainer .colors {
+  display: flex;
+  color: var(--dark);
+  
+}
+.colorsContainer .colors > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  font-size: 12px;
+}
+.colorsContainer .colors > div span:first-child {
+  height: 35px;
+  width: 35px;
+  border-radius: 10px;
+}
+.colorsContainer .colorInputs button {
+  background-color: var(--primary);
+  color: white;
+}
 @media screen and (max-width: 600px) {
   .newProductContainer {
     background-color: rgb(255, 255, 255);

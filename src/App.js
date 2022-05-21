@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
 import Footer from "./component/layout/Footer/Footer";
-import Home from "./component/Home/Home";
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products.jsx";
 import Search from "./component/Product/Search";
@@ -39,7 +38,6 @@ import ProductReviews from "./component/Admin/ProductReviews";
 import Contact from "./component/layout/Contact/Contact.jsx";
 import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
-import Navbar from "./component/layout/Navbar/Navbar";
 import SafePayment from "./component/Cart/SafePayment.jsx";
 import StripePayment from "./component/Cart/StripePayment";
 import { ToastContainer } from "react-toastify";
@@ -49,6 +47,7 @@ import { backend_api } from "./utils/backend_api";
 import Header from "./component/layout/Header/Header";
 import Home2 from "./component/Home/Home2";
 import Sections from "./component/Admin/Sections";
+import Home from "./component/Home/Home";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -78,7 +77,7 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
 
       <BottomNav />
 
@@ -114,7 +113,7 @@ function App() {
           component={PaypalPayment}
         />
 
-        <Route exact path="/" component={Home2} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/products/:section" component={Products} />

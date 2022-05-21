@@ -17,6 +17,7 @@ import "./Header.css";
 const Header = () => {
   const [drawerOpen, setdrawerOpen] = useState(false);
   const { sections, categories } = useSelector((state) => state.categories);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const [selectedItem, setselectedItem] = useState(null);
 
@@ -35,10 +36,7 @@ const Header = () => {
         <div className="categories">
           <h3>Categories</h3>
           {_categories.map((cat, index) => (
-            <Link
-              to={`/products/${cat.section}/${cat._id}`}
-              key={index}
-            >
+            <Link to={`/products/${cat.section}/${cat._id}`} key={index}>
               {cat.name}
             </Link>
           ))}
@@ -135,11 +133,12 @@ const Header = () => {
         </div>
         <div className="right">
           <Link to="/cart">
-            <AiOutlineShoppingCart />
+            <AiOutlineShoppingCart  className="icon" />
             <span>Cart</span>
+            <div className="cartCount">{cartItems.length}</div>
           </Link>
           <Link to="/account">
-            <BiUserCircle />
+            <BiUserCircle className="icon"/>
 
             <span>Sign in</span>
           </Link>

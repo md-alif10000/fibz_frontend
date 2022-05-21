@@ -1,4 +1,4 @@
-.product_card {
+/* .product_card {
   border: 2px solid transparent;
   margin: 5px 0;
 }
@@ -13,6 +13,7 @@
   background-color: var(--bg_secondary);
   transition: all 0.3s;
   border-radius: 10px;
+  background-color: #f0ece3;
 }
 .product_card .card_container .image_container {
   flex: 1;
@@ -59,7 +60,7 @@
 @media screen and (max-width: 600px) {
   .product_card .card_container {
     width: 43vw;
-    height: 350px;
+    height: 270px;
   }
   .product_card .card_container .info_container p {
     font-size: 13px;
@@ -70,4 +71,4 @@
   .product_card .card_container .info_container {
     height: 80px;
   }
-}
+} */

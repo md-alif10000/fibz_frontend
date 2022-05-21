@@ -1,0 +1,62 @@
+.sections-container {
+  width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px;
+}
+.sections-container > .sections {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-auto-rows: minmax(300px, auto);
+  grid-gap: 40px;
+}
+.sections-container > .sections .section:nth-child(3) {
+  grid-row: 1/3;
+  grid-column: 1/3;
+}
+/* .sections-container > .sections .section:nth-child(2) {
+    grid-row: 1/3;
+    grid-column: 3;
+  }
+  .sections-container > .sections .section:nth-child(1) {
+    grid-row: 3;
+    grid-column: 2/4;
+  } */
+.sections .section {
+  border: 1px solid black;
+  background-image: url(https://static.fibre2fashion.com/MemberResources/LeadResources/1/2017/9/Seller/17133153/Images/17133153_0_men-s-t-shirt.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.sections .section:hover div {
+  background-color: rgba(0, 0, 0, 0.795);
+}
+.sections .section:hover div a {
+  padding: 10px 20px;
+  font-size: 20px;
+}
+.sections .section div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.616);
+  height: 100%;
+}
+.sections .section div p {
+  font-size: 38px;
+  font-weight: 600;
+  padding: 20px;
+  color: var(--secondary);
+}
+
+.sections .section div a {
+  background-color: var(--primary);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+  margin: 20px;
+  transition: all 0.3s;
+}

@@ -14,7 +14,7 @@ const Footer = () => {
       </div>
 
       <div className="midFooter">
-        <img src="https://res.cloudinary.com/mr-marvel/image/upload/v1652719855/layouts/3_47FIBZ_zxjqza.png" />
+        <img src="https://res.cloudinary.com/mr-marvel/image/upload/v1653151013/layouts/DESIGN-02_fa3qri.webp" />
         <p>High Quality is our first priority</p>
 
         <p>Copyrights 2022 &copy; Mr Marvel</p>

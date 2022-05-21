@@ -1,15 +1,16 @@
 .topCategories {
   /* color: black; */
   width: 100vw;
-  /* background-color: black !important; */
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .topCategories > .heading{
   font-size: 38px;
   padding: 30px;
-  background-color: var(--dark);
   text-align: center;
-  color: var(--secondary);
+  color: var(--dark);
   border-bottom: 2px dotted var(--primary);
+  text-transform: uppercase;
 
 }
 .topCategories .caurosel{

@@ -23,6 +23,7 @@ import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 import { toast } from "react-toastify";
 import { AiFillMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import ReactImageMagnify from "react-image-magnify";
+import { PhotoSizeSelectActual } from "@material-ui/icons";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -47,6 +48,8 @@ const ProductDetails = ({ match }) => {
   };
 
   const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState(null);
+  const [size, setSize] = useState(null);
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -66,7 +69,19 @@ const ProductDetails = ({ match }) => {
   };
 
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(match.params.id, quantity));
+    if (product.colors.length !== 0) {
+      if (!color) {
+        return toast.warn("Please select a colour");
+      }
+    }
+    if (product.sizes.length !== 0) {
+      if (!size) {
+        return toast.warn("Please select a size");
+      }
+    }
+    product.color = color;
+    product.size = size;
+    dispatch(addItemsToCart(product, quantity));
 
     toast.success("Item Added To Cart");
   };
@@ -169,18 +184,45 @@ const ProductDetails = ({ match }) => {
               </div>
               <div className="detailsBlock-3">
                 <h1>{`₹${product.price}`}</h1>
+
+                <div className="variations">
+                  {product?.sizes?.length > 0 && <p>Available Sizes</p>}
+                  <div className="sizes">
+                    {product.sizes?.map((s, index) => (
+                      <span onClick={() => setSize(s.text)} key={index}>
+                        {s.text}
+                      </span>
+                    ))}
+                  </div>
+                  {product?.colors?.length > 0 && <p>Available Colours</p>}
+
+                  <div className="colors">
+                    {product.colors?.map((col, index) => (
+                      <div
+                        className={`${
+                          col == color ? "color selected" : "color"
+                        }`}
+                        key={index}
+                        onClick={() => setColor(col.name)}
+                      >
+                        <span style={{ backgroundColor: col.code }}></span>{" "}
+                        <span> {col.name} </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>
-                      {" "}
                       <AiFillMinusCircle />{" "}
                     </button>
                     <input readOnly type="number" value={quantity} />
                     <button onClick={increaseQuantity}>
-                      {" "}
                       <AiOutlinePlusCircle />{" "}
                     </button>
                   </div>
+
                   <button
                     disabled={product.Stock < 1 ? true : false}
                     onClick={addToCartHandler}

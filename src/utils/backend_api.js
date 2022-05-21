@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 // const token = window.localStorage.getItem("token");
 export const backend_api = "https://fibz.herokuapp.com";
 // export const backend_api = "http://localhost:4000";
-const token = Cookies.get("token");
+const token = localStorage.getItem("token");
 
 console.log(token);
 

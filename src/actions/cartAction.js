@@ -7,17 +7,27 @@ import axios from "../utils/backend_api";
 import { backend_api } from "../utils/backend_api";
 
 // Add to Cart
-export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(`${backend_api}/api/v1/product/${id}`);
+export const addItemsToCart = (product, quantity) => async (dispatch, getState) => {
+  // const { data } = await axios.get(`${backend_api}/api/v1/product/${id}`);
 
   dispatch({
     type: ADD_TO_CART,
+    // payload: {
+    //   product: data.product._id,
+    //   name: data.product.name,
+    //   price: data.product.price,
+    //   image: data.product.images[0].url,
+    //   stock: data.product.Stock,
+    //   quantity,
+    // },
     payload: {
-      product: data.product._id,
-      name: data.product.name,
-      price: data.product.price,
-      image: data.product.images[0].url,
-      stock: data.product.Stock,
+      product: product._id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0].url,
+      stock: product.Stock,
+      color:product.color,
+      size:product.size,
       quantity,
     },
   });

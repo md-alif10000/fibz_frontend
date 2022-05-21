@@ -13,6 +13,8 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import { getSections } from "../../actions/categoryAction";
+import { WithContext as ReactTags } from "react-tag-input";
+import { toast } from "react-toastify";
 
 const NewProduct = ({ history }) => {
   const dispatch = useDispatch();
@@ -20,6 +22,11 @@ const NewProduct = ({ history }) => {
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
   const { sections, categories } = useSelector((state) => state.categories);
+
+  const [tags, setTags] = useState([]);
+  const [colorCode, setcolorCode] = useState("");
+  const [colorName, setcolorName] = useState("");
+  const [colors, setColors] = useState([]);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -31,6 +38,13 @@ const NewProduct = ({ history }) => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const [filteredCategories, setfilteredCategories] = useState([]);
+
+  const KeyCodes = {
+    comma: 188,
+    enter: 13,
+  };
+
+  const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
   const onSectionSelect = (id) => {
     setSection(id);
@@ -66,6 +80,8 @@ const NewProduct = ({ history }) => {
     myForm.set("category", category);
     myForm.set("section", section);
     myForm.set("Stock", Stock);
+    myForm.set("sizes", JSON.stringify(tags));
+    myForm.set("colors", JSON.stringify(colors));
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -91,6 +107,45 @@ const NewProduct = ({ history }) => {
 
       reader.readAsDataURL(file);
     });
+  };
+
+  const handleDelete = (i) => {
+    setTags(tags.filter((tag, index) => index !== i));
+  };
+
+  const handleAddition = (tag) => {
+    console.log("Before", tags);
+
+    setTags([...tags, tag]);
+
+    console.log("after", tags);
+  };
+
+  const handleDrag = (tag, currPos, newPos) => {
+    const newTags = tags.slice();
+
+    newTags.splice(currPos, 1);
+    newTags.splice(newPos, 0, tag);
+
+    // re-render
+    setTags(newTags);
+  };
+
+  const handleTagClick = (index) => {
+    console.log("The tag at index " + index + " was clicked");
+  };
+
+  const addColor = () => {
+    if (!colorName) {
+      return toast.error("Enter color name");
+    }
+    if (!colorCode) {
+      return toast.error("Enter color code");
+    }
+    setColors([...colors, { name: colorName, code: colorCode }]);
+
+    setcolorName("");
+    setcolorCode("");
   };
 
   return (
@@ -126,6 +181,59 @@ const NewProduct = ({ history }) => {
               />
             </div>
 
+            <div className="tagsContainer">
+              <ReactTags
+                tags={tags}
+                delimiters={delimiters}
+                handleDelete={handleDelete}
+                handleAddition={handleAddition}
+                handleDrag={handleDrag}
+                handleTagClick={handleTagClick}
+                inputFieldPosition="bottom"
+                placeholder="Enter sizes"
+                autocomplete
+                classNames={{
+                  tags: "tagsClass",
+                  tagInput: "tagInputClass",
+                  tagInputField: "tagInputFieldClass",
+                  selected: "selectedClass",
+                  tag: "tag",
+                  remove: "removeClass",
+                  suggestions: "suggestionsClass",
+                  activeSuggestion: "activeSuggestionClass",
+                  editTagInput: "editTagInputClass",
+                  editTagInputField: "editTagInputField",
+                  clearAll: "clearAllClass",
+                }}
+              />
+            </div>
+
+            <div className="colorsContainer">
+              <div className="colors">
+                {colors.map((color, index) => (
+                  <div key={index}>
+                    <span style={{ backgroundColor: color.code }}> </span>{" "}
+                    <span>{color.name}</span>{" "}
+                  </div>
+                ))}
+              </div>
+              <div className="colorInputs">
+                <input
+                  type={"color"}
+                  onChange={(e) => setcolorCode(e.target.value)}
+                  placeholder="Color"
+                  value={colorCode}
+                />
+                <input
+                  value={colorName}
+                  type={"text"}
+                  onChange={(e) => setcolorName(e.target.value)}
+                  placeholder="color name"
+                />
+                <button onClick={() => addColor()}>Add Color</button>
+              </div>
+            </div>
+
             <div>
               <DescriptionIcon />
 
@@ -154,7 +262,7 @@ const NewProduct = ({ history }) => {
               <AccountTreeIcon />
               <select onChange={(e) => setCategory(e.target.value)}>
                 <option value="">Choose Category</option>
-                {filteredCategories.map((cate,index) => (
+                {filteredCategories.map((cate, index) => (
                   <option key={index} value={cate._id}>
                     {cate.name}
                   </option>

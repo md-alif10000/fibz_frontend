@@ -57,7 +57,7 @@ export const login = (email, password) => async (dispatch) => {
     );
 
     console.log(data);
-    COOk.set("token", data.token, { expires: 7 });
+    localStorage.setItem("token", data.token);
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
@@ -79,6 +79,8 @@ export const register = (userData) => async (dispatch) => {
       userData,
       config
     );
+
+    localStorage.setItem("token", data.token);
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -106,6 +108,8 @@ export const loadUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     await axios.get(`${backend_api}/api/v1/logout`);
+
+    localStorage.removeItem("token");
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
