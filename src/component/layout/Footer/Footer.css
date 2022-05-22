@@ -1,84 +1,78 @@
 footer {
-
-  padding: 2vmax;
-  background-color: rgb(34, 33, 33);
-  color: white;
   display: flex;
-  align-items: center;
+  width: 100vw;
+  height: 600px;
+  background-color: rgb(231, 231, 231);
 }
 
-.leftFooter {
-  width: 20%;
-  display: flex;
+footer .left {
+  flex: 1;
+  padding: 50px;
+  padding-left: 200px;
 
+  display: flex;
+  align-items: center;
   flex-direction: column;
-  align-items: center;
+  color: var(--dark);
+  justify-content: space-between;
 }
-.leftFooter > h4 {
-  font-family: "Roboto";
-  font-size: 1vmax;
+footer .left .logo img {
+  width: 180px;
+  height: auto;
 }
-.leftFooter > p {
-  text-align: center;
-  font-size: 1.2vmax;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-.leftFooter > img {
-  width: 10vmax;
-  margin: 1vmax;
-  cursor: pointer;
+footer .left .socials {
+  display: flex;
+  font-size: 24px;
+  padding: 20px 0;
 }
 
-.midFooter {
-  width: 60%;
-
-  text-align: center;
-}
-
-
-.midFooter img{
-  height: 200px;
-  width: auto;
-}
-.midFooter > p {
-  max-width: 60%;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin: 1vmax auto;
-}
-
-.rightFooter {
-  width: 20%;
-
+footer .left .contacts {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.rightFooter > h4 {
-  font-family: "Roboto";
-  font-size: 1.4vmax;
-  text-decoration: underline;
-}
-.rightFooter > a {
-  text-decoration: none;
-  font-size: 1.3vmax;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: white;
-  transition: all 0.5s;
-  margin: 0.5vmax;
-}
 
-.rightFooter > a:hover {
-  color: #eb4034;
+  padding: 20px;
 }
+footer .left .contacts .contact {
+  padding: 10px;
+}
+footer .left .contacts .contact a {
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 18px;
+}
+footer .left .socials .socialIcon {
+  margin: 10px;
+}
+footer .right {
+  flex: 2;
+  padding: 50px;
+  padding-right: 200px;
+  background-color: rgb(199, 199, 199);
+  display: flex;
+  flex-direction: column;
+}
+footer .right .newsletter .inputBox{
+    width: 400px;
+    display: flex;
+    height: 40px;
+    background-color: var(--white);
+}
+footer .right .newsletter .inputBox input{
+    flex: 1;
+    height: 100%;
+    padding: 5px;outline: none;
+    font-size: 17px;
+border: none;
+    letter-spacing: 0.4px;
+}
+footer .right .newsletter .inputBox button{
+    height: 100%;
+    width: 100px;
+    border: none;
+    outline: none;
+    color: var(--dark);
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: inherit;
 
-
-@media screen and (max-width:600px) {
-  footer{
-    margin-bottom: 50px;
-  }
-  .midFooter img{
-    height: 170px;
-  }
-  
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from "react";
-import Footer from "./component/layout/Footer/Footer";
+
 import ProductDetails from "./component/Product/ProductDetails";
 import Products from "./component/Product/Products.jsx";
 import Search from "./component/Product/Search";
@@ -17,6 +17,7 @@ import UpdateProfile from "./component/User/UpdateProfile";
 import UpdatePassword from "./component/User/UpdatePassword";
 import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
+import Footer from '../src/component/layout/Footer/Footer'
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
 import ConfirmOrder from "./component/Cart/ConfirmOrder";

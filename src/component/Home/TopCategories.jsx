@@ -4,9 +4,14 @@ import Carousel from "react-elastic-carousel";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./TopCategories.css";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function TopCategories() {
   const { categories } = useSelector((state) => state.categories);
+
+  const [catref, inView] = useInView();
+
   const breakPoints = [
     { width: 1, itemsToShow: 2 },
     { width: 550, itemsToShow: 3 },
@@ -17,10 +22,28 @@ export default function TopCategories() {
     <>
       <div className="topCategories">
         <h1 className="heading border-bottom">Top Categories</h1>
-        <div className="caurosel">
+        <motion.div
+          className="caurosel"
+          ref={catref}
+          animate={{
+            scale: inView ? 1 : 0,
+            opacity: inView ? 1 : 0,
+            borderRadius: inView ? "0" : "20%",
+          }}
+          initial={{
+            scale: 0.4,
+            opacity: 0.2,
+            borderRadius: "0",
+          }}
+          transition={{
+            type:"spring",
+            stiffness:150
+          }}
+        >
           <Carousel breakPoints={breakPoints}>
             {categories.map((category, index) => (
-              <Link
+              <motion.Link
+                key={index}
                 to={`/products/${category.section}/${category._id}`}
                 className="topCategory"
               >
@@ -28,10 +51,10 @@ export default function TopCategories() {
                   <img src={category?.image?.url} alt="" />
                 </div>
                 <div className="title">{category.name}</div>
-              </Link>
+              </motion.Link>
             ))}
           </Carousel>
-        </div>
+        </motion.div>
       </div>
     </>
   );

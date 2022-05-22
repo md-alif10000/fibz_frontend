@@ -1,8 +1,8 @@
-.newsletter {
+/*.newsletter {
   width: 100vw;
   height: 400px;
   background-color: var(--primary_dark);
-  /* background-image: url(https://res.cloudinary.com/mr-marvel/image/upload/v1652367850/layouts/2_FIBZ_youtube_background_atnwzv.jpg); */
+
   position: relative;
   background-size: auto;
 }
@@ -50,3 +50,4 @@
   font-weight: 500;
   background-color: var(--secondary);
 }
+*/

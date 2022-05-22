@@ -8,11 +8,11 @@
 .hero_container {
   width: 100%;
   height: 100%;
-  animation: hero_width 2s 1s ease-in-out;
-  background-color: rgba(0, 0, 0, 0.473);
+  /* animation: hero_width 2s 1s ease-in-out; */
+  /* background-color: rgba(0, 0, 0, 0.473); */
 }
 .content {
-  animation: displayitem 5s  ease-in-out;
+  /* animation: displayitem 5s  ease-in-out; */
   opacity: 1;
   max-width: 1400px;
   margin: 0 auto;
