@@ -11,7 +11,7 @@ import TopCategories from "./TopCategories";
 
 import Sections from "./Sections";
 import "./_home.css";
-import Nav from "../layout/Navbar/NavBar.jsx";
+import Nav from "../layout/Navbar/Navbar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -35,10 +35,7 @@ const Home = () => {
         <div className="hero_container">
           <Nav />
           <div className="content">
-
-
-
-            <h1>WE deal only with premium  .</h1>
+            <h1>WE deal only with premium .</h1>
           </div>
         </div>
       </div>
